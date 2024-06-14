@@ -29,3 +29,7 @@ fn main() {
         }
     }
 }
+
+const fn h() -> i32 {
+    7
+}
