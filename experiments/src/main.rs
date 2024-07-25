@@ -1,19 +1,14 @@
-mod collections;
-mod enums;
-mod errors;
-mod generics;
-mod second_word;
-mod structs;
+mod examples;
 
-fn main() {
-    collections::example();
-}
+fn main() {}
 
 #[allow(dead_code)]
 fn unused() {
-    second_word::example();
-    structs::example();
-    enums::example();
-    collections::example();
-    generics::example();
+    examples::second_word::example();
+    examples::structs::example();
+    examples::enums::example();
+    examples::collections::example();
+    examples::generics::example();
+    examples::collections::example();
+    examples::lifetimes::example();
 }
