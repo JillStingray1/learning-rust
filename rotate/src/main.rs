@@ -2,7 +2,6 @@ mod tests;
 
 use std::process;
 
-
 fn main() {
     let args = rotate::get_args().unwrap_or_else(|err| {
         eprintln!("Problem parsing arguments {err}");
