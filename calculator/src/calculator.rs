@@ -1,7 +1,9 @@
 #[derive(Debug)]
 pub enum Inputs {
-    Number(Vec<i32>),
+    Number(i64),
     Add,
+    Subtract,
+    Multiply,
 }
 
 pub struct Calculator {
@@ -18,21 +20,26 @@ impl Calculator {
     }
 
     pub fn add_input(&mut self, input: Inputs) {
+        self.inputs.push(input)
+    }
+
+    pub fn evaluate(&mut self) {
         use Inputs::*;
-        if self.inputs.len() == 0 {
-            match &input {
-                Number(_) => self.inputs.push(input),
-                _ => return,
-            }
-        } else {
-            let last_token_index = self.inputs.len() - 1;
-            match &mut self.inputs[last_token_index] {
-                Number(value) => match &input {
-                    Number(digit) => value.push(digit[0]),
-                    _ => self.inputs.push(input),
-                },
-                _ => self.inputs.push(input),
+        let mut number_1 = 0;
+        let mut number_2 = 0;
+        while self.inputs.len() > 0 {
+            let mut digit = 1;
+            number_1 = match self.inputs.pop().unwrap() {
+                Number(x) => number_1 + x * digit,
+                Add => {
+                    number_2 += number_1;
+                    0
+                }
+                Subtract => todo!(),
+                Multiply => todo!(),
             }
         }
     }
 }
+
+fn do_operation(operation: Inputs, num_1: i64, num_2: i64) -> i64 {}
