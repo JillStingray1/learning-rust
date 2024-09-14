@@ -1,6 +1,8 @@
 mod examples;
 
-fn main() {}
+fn main() {
+    examples::functional_programming::example();
+}
 
 #[allow(dead_code)]
 fn unused() {

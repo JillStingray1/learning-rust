@@ -28,7 +28,7 @@ impl Calculator {
         let mut number_1 = 0;
         let mut number_2 = 0;
         while self.inputs.len() > 0 {
-            let mut digit = 1;
+            let mut digit: i64 = 1;
             number_1 = match self.inputs.pop().unwrap() {
                 Number(x) => number_1 + x * digit,
                 Add => {
@@ -36,10 +36,9 @@ impl Calculator {
                     0
                 }
                 Subtract => todo!(),
-                Multiply => todo!(),
             }
         }
     }
 }
 
-fn do_operation(operation: Inputs, num_1: i64, num_2: i64) -> i64 {}
+// fn do_operation(operation: Inputs, num_1: i64, num_2: i64) -> i64 {}
