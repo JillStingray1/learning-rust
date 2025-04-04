@@ -5,4 +5,5 @@ pub mod functional_programming;
 pub mod generics;
 pub mod lifetimes;
 pub mod second_word;
+pub mod smart_pointers;
 pub mod structs;

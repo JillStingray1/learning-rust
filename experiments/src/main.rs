@@ -1,16 +1,18 @@
 mod examples;
+use examples::*;
 
 fn main() {
-    examples::functional_programming::example();
+    smart_pointers::example();
 }
 
 #[allow(dead_code)]
 fn unused() {
-    examples::second_word::example();
-    examples::structs::example();
-    examples::enums::example();
-    examples::collections::example();
-    examples::generics::example();
-    examples::collections::example();
-    examples::lifetimes::example();
+    functional_programming::example();
+    second_word::example();
+    structs::example();
+    enums::example();
+    collections::example();
+    generics::example();
+    collections::example();
+    lifetimes::example();
 }
