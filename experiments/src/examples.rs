@@ -7,3 +7,4 @@ pub mod lifetimes;
 pub mod second_word;
 pub mod smart_pointers;
 pub mod structs;
+pub mod threads;

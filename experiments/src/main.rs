@@ -2,7 +2,7 @@ mod examples;
 use examples::*;
 
 fn main() {
-    smart_pointers::example();
+    threads::thread_example();
 }
 
 #[allow(dead_code)]
@@ -15,4 +15,5 @@ fn unused() {
     generics::example();
     collections::example();
     lifetimes::example();
+    smart_pointers::example();
 }
