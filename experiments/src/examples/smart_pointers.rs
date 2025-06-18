@@ -30,7 +30,16 @@ fn cons_example() {
     println!("the third element of cons is {third}")
 }
 
+/// Using smart pointers like a reference by using the deref trait
+fn deref_example() {
+    let x = 5;
+    let y = Box::new(x);
+    // since box implements the deref trait
+    assert_eq!(5, *y);
+}
+
 pub fn example() {
     box_example();
     cons_example();
+    deref_example();
 }
