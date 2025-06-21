@@ -1,3 +1,5 @@
+use std::ops::Deref;
+
 fn box_example() {
     // simple example of a box, which stores a value on the heap instead of the stack
     let b = Box::new(5);
@@ -38,8 +40,33 @@ fn deref_example() {
     assert_eq!(5, *y);
 }
 
+/// Demonstration of deref trait
+struct MyBox<T>(T);
+
+impl<T> MyBox<T> {
+    fn new(x: T) -> MyBox<T> {
+        MyBox(x)
+    }
+}
+
+impl<T> Deref for MyBox<T> {
+    type Target = T;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+fn my_box() {
+    let x = 5;
+    let y = MyBox::new(x);
+    // since box implements the deref trait
+    assert_eq!(5, *y);
+}
+
 pub fn example() {
     box_example();
     cons_example();
     deref_example();
+    my_box();
 }
