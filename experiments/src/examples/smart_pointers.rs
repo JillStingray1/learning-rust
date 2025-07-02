@@ -1,4 +1,4 @@
-use std::ops::Deref;
+use std::{ops::Deref, rc::Rc};
 
 fn box_example() {
     // simple example of a box, which stores a value on the heap instead of the stack
@@ -64,9 +64,32 @@ fn my_box() {
     assert_eq!(5, *y);
 }
 
+/// Reference counted smart pointer example
+/// Rc allows references to be shared
+#[allow(dead_code)]
+enum ShareableList {
+    Cons(i32, Rc<ShareableList>),
+    Nil,
+}
+
+#[allow(unused)]
+fn rc_example() {
+    use ShareableList::*;
+    let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
+    println!("count after creating a = {}", Rc::strong_count(&a));
+    let b = Cons(3, Rc::clone(&a));
+    println!("count after creating b = {}", Rc::strong_count(&a));
+    {
+        let c = Cons(4, Rc::clone(&a));
+        println!("count after creating c = {}", Rc::strong_count(&a));
+    }
+    println!("count after c goes out of scope = {}", Rc::strong_count(&a));
+}
+
 pub fn example() {
     box_example();
     cons_example();
     deref_example();
     my_box();
+    rc_example();
 }
